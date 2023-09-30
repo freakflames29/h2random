@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: hostelers
+    envVars:
+      - key: RAILS_ENV
+        value: production
