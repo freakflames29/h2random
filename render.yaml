@@ -1,6 +1,19 @@
+databases:
+  - name: hostelers
+    databaseName: hostelers
+    user: hostelers_user
+
+
+
 services:
   - type: web
     name: hostelers
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
-      - key: RAILS_ENV
-        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite
+          property: connectionString
+       sync: false

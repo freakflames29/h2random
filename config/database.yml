@@ -18,11 +18,11 @@
 #   socket: /tmp/mysql.sock
 
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
-  database: db/development.sqlite3
-
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -55,8 +55,11 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
+username: hostelers
+password:
+host: localhost
+port: 5432
+
+roduction:
   <<: *default
-  database: hostelers_production
-  username: hostelers
-  password: <%= ENV["HOSTELERS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
