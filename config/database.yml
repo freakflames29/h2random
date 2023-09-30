@@ -55,11 +55,13 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-username: "hostelers_user"
-password:
-host: localhost
-port: 5432
+# username: "hostelers_user"
+# password:
+# host: localhost
+# port: 5432
 
 production:
   <<: *default
+  database: hostelers
+  username: hostelers_user
   url: <%= ENV['DATABASE_URL'] %>
