@@ -1,5 +1,5 @@
 # Use an official Ruby runtime as the base image
-FROM ruby:3.2.2
+FROM --platform=linux/amd64 ruby:3.2.2
 
 # Set the working directory in the container
 WORKDIR /app
